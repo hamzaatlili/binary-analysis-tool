@@ -22,15 +22,17 @@
 // ===================
 
 import { Suspense } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
+import { ErrorBoundary, type FallbackProps } from 'react-error-boundary'
 import { Outlet } from 'react-router-dom'
 import styles from './shell.module.scss'
 
-function ShellErrorFallback({ error }: { error: Error }): React.ReactElement {
+function ShellErrorFallback({ error }: FallbackProps): React.ReactElement {
+  const message = error instanceof Error ? error.message : String(error)
+
   return (
     <div className={styles.error}>
       <h2>Something went wrong</h2>
-      <pre>{error.message}</pre>
+      <pre>{message}</pre>
     </div>
   )
 }

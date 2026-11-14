@@ -9,7 +9,7 @@
 
 FROM node:25-slim
 
-RUN corepack enable && corepack prepare pnpm@10.29.1 --activate
+RUN npm install -g pnpm@10.29.1
 
 WORKDIR /app
 
